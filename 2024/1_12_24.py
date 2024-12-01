@@ -1,5 +1,6 @@
 left, right = [], []
-ans = 0
+ans1 = 0
+ans2 = 0
 
 # Read input
 for line in open('1_12_24_data.csv'):
@@ -11,7 +12,17 @@ for line in open('1_12_24_data.csv'):
 # Sort input
 left.sort()
 right.sort()
-for i in range(len(left)):
-    ans += abs(left[i] - right[i])
 
-print(ans)
+# Part 1
+for i in range(len(left)):
+    ans1 += abs(left[i] - right[i])
+print(ans1)
+
+# Part 2
+from collections import Counter
+right_counter = Counter(right)
+
+for i in range(len(left)):
+    ans2 += right_counter[left[i]] * left[i]
+
+print(ans2)
