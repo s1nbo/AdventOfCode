@@ -13,6 +13,7 @@ with open('04_data.txt') as f:
 
 def is_valid(i, j):
     return i >= 0 and i < len(grid) and j >= 0 and j < len(grid[i])
+
 # Part 1
 for i in range(len(grid)):
     for j in range(len(grid[i])):
@@ -34,14 +35,14 @@ directions = directions[6:]
 for i in range(len(grid)):
     for j in range(len(grid[i])):
         if grid[i][j] == 'A':
+            
             tl = (i - 1, j - 1) # top left
             tr = (i - 1, j + 1) # top right
             bl = (i + 1, j - 1) # bottom left
             br = (i + 1, j + 1) # bottom right
-            # if is_valid(i + 1, j + 1) and is_valid(i - 1, j - 1) and is_valid(i + 1, j - 1) and is_valid(i - 1, j + 1):
+
             if is_valid(tl[0], tl[1]) and is_valid(tr[0], tr[1]) and is_valid(bl[0], bl[1]) and is_valid(br[0], br[1]):
                 if (grid[tl[0]][tl[1]] == 'M' and grid[br[0]][br[1]] == 'S') or (grid[tl[0]][tl[1]] == 'S' and grid[br[0]][br[1]] == 'M'): # First diagonal
                     if (grid[tr[0]][tr[1]] == 'M' and grid[bl[0]][bl[1]] == 'S') or (grid[tr[0]][tr[1]] == 'S' and grid[bl[0]][bl[1]] == 'M'): # Second diagonal
                         ans += 1
-
 print(ans)    
